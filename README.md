@@ -1,10 +1,23 @@
-# Getting Started with Create React App
+# Brief information about the map
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a href="https://ibb.co/ZBTMdQJ"><img src="https://i.ibb.co/5rcRTQ9/map-photo-1.jpg" alt="map-photo-1" border="0"></a>
+#### Work with satellite map through google map
+<a href="https://ibb.co/RTdPHKL"><img src="https://i.ibb.co/HT3Ygym/map-photo-2.jpg" alt="map-photo-2" border="0"></a>
+#### search for the desired location through the search field and mark it with a marker <br/> the map gives a unique look through the flyTo animation
+<a href="https://ibb.co/RHjnLhW"><img src="https://i.ibb.co/bdbhpHn/map-photo-3.jpg" alt="map-photo-3" border="0"></a>
+#### the quick search engine works together with the open street map and facilitates geocoding
 
-## Available Scripts
 
-In the project directory, you can run:
+# You can customize the map to your liking and add convenience and flair to your project. !!!
+
+
+## For those who want to see the demo version
+
+Follow the steps below in order to view the demo version when you open the project.
+
+### `npm install`
+
+downloads the files needed for the map in package.json
 
 ### `npm start`
 
@@ -14,57 +27,149 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+# For those who want to start their own project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Libraries
 
-### `npm run build`
+````
+npm install axios 
+````
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+````
+npm install leaflet 
+````
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+````
+npm install react-leaflet
+````
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### /component/map.js
 
-### `npm run eject`
+copy the file and add it to your project file
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+call the
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `<Map />`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+component in your file where you want to escape the map
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+and complete the following mandatory tasks
 
-## Learn More
+# Mandatory tasks
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+const [selectPosition, setSelectPosition] = useState(null); // **mandatory state
+const [searchText, setSearchText] = useState('') // **mandatory state
+const [listPlace, setListPlace] = useState([]) // **mandatory state
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Add the above state data to the file where the <Map /> component is called. These are the states needed to manage the
+map
 
-### Code Splitting
+# `<Map />` component attributes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+             <Map
+    selectPosition={selectPosition}
+    // information of the selected item in the list place || **mandatory
+    setSelectPosition={setSelectPosition}
+    // change the data of the selected item in the list place || **mandatory
+    searchText={searchText}
+    // the name of the user-entered location || **mandatory
+    listPlace={listPlace}
+    // list of places found by search ||  **mandatory
+    setListPlace={setListPlace}
+    // a list-changing function || **mandatory
+    zoom={14}
+    // zoom lvl map  || default value 9
+    style={{
+        margin: '20px 0 5px 0',
+        width: "100%",
+        height: "400px",
+        overflow: "hidden",
+        borderRadius: "20px",
+    }}
+    // style for map
+    className={'test className'}
+    // your ClassName for map
+    lat_long={[41.34557, 69.284599]}
+    // default center map
+/>
+```
 
-### Analyzing the Bundle Size
+These are all attributes that the <Map/> component accepts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Mandatory attributes
 
-### Making a Progressive Web App
+| Attributes          | Description                                                                                                                                                                    | accepts                         |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
+| `selectPosition`    | information of the selected item in the list place                                                                                                                             | state: selectPosition / null    |
+| `setSelectPosition` | change the data of the selected item in the list place                                                                                                                         | state: setSelectPosition / null |
+| `searchText`        | The name of the location written in the input and stored in the searchText state                                                                                               | state: searchText / string      |
+| `listPlace`         | list of places found by search                                                                                                                                                 | state: listPlace / [ ]         |
+| `setListPlace`      | a list-changing function                                                                                                                                                       | state: setListPlace / [ ]      |
+| `width height`      | Mandatory width and height must be given in style or class, otherwise the map will not be displayed                                                                            | width:100% <br/> height: 400px  |
+| `lat_long`          | To determine the center of the map, you need to write the coordinates of a certain place   <br/> example: [38.39248 , 39,4894] ; the first value is lat and the second is lang | [ lat , lang ]                  |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Example
 
-### Advanced Configuration
+````javascript
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+import React, {useState} from 'react';
+import Map from "./map";
+import styles from "./map.module.css";
 
-### Deployment
+const MapExample = () => {
+    const [selectPosition, setSelectPosition] = useState(null);
+    const [searchText, setSearchText] = useState('')
+    const [listPlace, setListPlace] = useState([])
+    return (
+        <div>
+            <Map
+                selectPosition={selectPosition}
+                setSelectPosition={setSelectPosition}
+                searchText={searchText}
+                listPlace={listPlace}
+                setListPlace={setListPlace}
+                zoom={14}
+                style={{
+                    margin: '20px 0 5px 0',
+                    width: "100%",
+                    height: "400px",
+                    overflow: "hidden",
+                    borderRadius: "20px",
+                }}
+                className={'test className'}
+                lat_long={[41.34557, 69.284599]}
+            />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+            <input type="text"
+                   className={styles.searchText}
+                   value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+            {listPlace && searchText ? listPlace.map((item) => {
+                return (
+
+                    <div className={styles.listItem}
+                         onClick={() => {
+                             setSelectPosition(item);
+                             setSearchText('');
+                         }}>
+                        {item.display_name}
+                    </div>
+
+                )
+            }) : !selectPosition?.display_name && 'no data'}
+        </div>
+    );
+};
+
+export default MapExample;
+
+````
+
+### Creator: khasanov_ibroxim
+####  [Telegram](https://t.me/Khasanov_ibroxim)
+####  [WhatsApp](https://wa.me/998993045475)
+####  [Instagram](https://www.instagram.com/khasanov_ibroxim/)

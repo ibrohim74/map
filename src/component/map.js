@@ -18,7 +18,7 @@ const customMarkerIcon = new L.Icon({
 const Map = (props) => {
     const { selectPosition, setSelectPosition } = props;
     const [clicked, setClicked] = useState(false);
-    const mapRef = useRef(null); // map o'zgaruvchisini useRef() orqali tanlang
+    const mapRef = useRef(null);
 
     const search = async () => {
         const params = {
@@ -70,7 +70,7 @@ const Map = (props) => {
     }, [props.searchText, selectPosition, clicked]);
 
     useEffect(() => {
-        const map = mapRef.current; // map o'zgaruvchisini mapRef.current orqali aniqlang
+        const map = mapRef.current;
         if (map && selectPosition && selectPosition.lat && selectPosition.lon) {
             map.flyTo([selectPosition.lat, selectPosition.lon], map.getZoom());
         }
@@ -79,10 +79,11 @@ const Map = (props) => {
     return (
         <div>
             <MapContainer
-                ref={mapRef} // map ni ref propertiyasiga qo'shing
-                zoom={9}
-                center={selectPosition && selectPosition.lat && selectPosition.lon ? [selectPosition.lat, selectPosition.lon] : [41.34557, 69.284599]}
-                style={props.style}
+                ref={mapRef}
+                zoom={props.zoom ? props.zoom : 9}
+                center={selectPosition && selectPosition.lat && selectPosition.lon ? [selectPosition.lat, selectPosition.lon] : props?.lat_long}
+                style={props.style && props.style}
+                className={props.className && props.className}
             >
                 <TileLayer
                     attribution="by khasanov_ibroxim"
