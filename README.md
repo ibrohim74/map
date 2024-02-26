@@ -1,5 +1,5 @@
 # Brief information about the map
-
+####  [see a simple example link](https://mapbykhasanov.vercel.app/)
 <a href="https://ibb.co/ZBTMdQJ"><img src="https://i.ibb.co/5rcRTQ9/map-photo-1.jpg" alt="map-photo-1" border="0"></a>
 #### Work with satellite map through google map
 <a href="https://ibb.co/RTdPHKL"><img src="https://i.ibb.co/HT3Ygym/map-photo-2.jpg" alt="map-photo-2" border="0"></a>
