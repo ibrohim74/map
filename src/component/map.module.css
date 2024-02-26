@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+ body{
+    background: #070F2B;
+    margin: 0;
+     font-family: "Open Sans", sans-serif;
+    padding: 0;
+    color: white;
+
+}
+.container{
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.searchText{
+    width: 100%;
+    margin-top: 10px;
+    height: 23px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+.mapCurrentLocation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1B1A55;
+    height: 30px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.listTable{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.listItem:nth-child(1){
+    margin-top: 20px;
+}
+.listItem{
+    height: 20px;
+    width: 100%;
+    background: #535C91;
+    padding: 5px;
+    margin: 5px ;
+    cursor: pointer;
+
+}
